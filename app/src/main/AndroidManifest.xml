@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBanhangck">
-        <activity android:name=".activity.ChitietSanpham"></activity>
+        <activity android:name=".activity.Thongtinkhachhang"></activity>
+        <activity android:name=".activity.GiohangActivity" />
+        <activity android:name=".activity.ChitietSanpham" />
         <activity android:name=".activity.ThongtinActivity" />
         <activity android:name=".activity.LienheActivity" />
         <activity android:name=".activity.BanActivity" />

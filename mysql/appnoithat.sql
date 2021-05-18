@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 15, 2021 lúc 08:34 AM
+-- Thời gian đã tạo: Th5 18, 2021 lúc 09:08 AM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `chitietdh` (
   `iddh` int(11) NOT NULL,
   `idsp` int(11) NOT NULL,
+  `tensanpham` varchar(500) DEFAULT NULL,
   `soluong` int(11) NOT NULL,
   `dongia` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,34 +39,41 @@ CREATE TABLE `chitietdh` (
 -- Đang đổ dữ liệu cho bảng `chitietdh`
 --
 
-INSERT INTO `chitietdh` (`iddh`, `idsp`, `soluong`, `dongia`) VALUES
-(1, 11, 1, 21000000),
-(2, 7, 2, 60000000),
-(2, 10, 1, 850000),
-(3, 7, 3, 90000000),
-(3, 10, 1, 850000),
-(4, 2, 1, 6000000),
-(4, 7, 1, 30000000),
-(5, 10, 1, 850000),
-(6, 10, 1, 850000),
-(7, 12, 2, 20000000),
-(8, 11, 1, 21000000),
-(9, 10, 1, 850000),
-(10, 11, 1, 21000000),
-(12, 12, 1, 10000000),
-(13, 7, 1, 30000000),
-(13, 8, 1, 68000000),
-(13, 9, 1, 22000000),
-(13, 10, 1, 850000),
-(13, 11, 3, 63000000),
-(13, 12, 1, 10000000),
-(14, 11, 1, 21000000),
-(15, 11, 1, 21000000),
-(16, 11, 1, 21000000),
-(17, 10, 1, 850000),
-(18, 26, 1, 17000000),
-(18, 27, 1, 11000000),
-(19, 26, 1, 17000000);
+INSERT INTO `chitietdh` (`iddh`, `idsp`, `tensanpham`, `soluong`, `dongia`) VALUES
+(1, 11, NULL, 1, 21000000),
+(2, 7, NULL, 2, 60000000),
+(2, 10, NULL, 1, 850000),
+(3, 7, NULL, 3, 90000000),
+(3, 10, NULL, 1, 850000),
+(4, 2, NULL, 1, 6000000),
+(4, 7, NULL, 1, 30000000),
+(5, 10, NULL, 1, 850000),
+(6, 10, NULL, 1, 850000),
+(7, 12, NULL, 2, 20000000),
+(8, 11, NULL, 1, 21000000),
+(9, 10, NULL, 1, 850000),
+(10, 11, NULL, 1, 21000000),
+(12, 12, NULL, 1, 10000000),
+(13, 7, NULL, 1, 30000000),
+(13, 8, NULL, 1, 68000000),
+(13, 9, NULL, 1, 22000000),
+(13, 10, NULL, 1, 850000),
+(13, 11, NULL, 3, 63000000),
+(13, 12, NULL, 1, 10000000),
+(14, 11, NULL, 1, 21000000),
+(15, 11, NULL, 1, 21000000),
+(16, 11, NULL, 1, 21000000),
+(17, 10, NULL, 1, 850000),
+(18, 26, NULL, 1, 17000000),
+(18, 27, NULL, 1, 11000000),
+(19, 26, NULL, 1, 17000000),
+(5, 2, 'Ghe', 1, 6900000),
+(5, 3, 'Ghe', 1, 6900000),
+(37, 3, '', 5, 699000),
+(37, 3, 'ghe', 5, 699000),
+(37, 3, 'ghe', 5, 699000),
+(37, 28, 'Ghế có tay Porto', 1, 8500000),
+(37, 28, 'Ghế có tay Porto', 1, 8500000);
 
 -- --------------------------------------------------------
 
@@ -156,7 +164,11 @@ INSERT INTO `donhang` (`id`, `idkhachhang`, `ngay`, `tenuser`, `diachi`, `sodt`,
 (16, 2, '2021-01-10', 'Trần Quốc Tú', '26 Huỳnh Văn Nghệ', 1264607869, 'tranxp34878@gmail.com', '', 1, 18900000, 1),
 (17, 2, '2021-01-10', 'Trần Quốc Tú', '26 Huỳnh Văn Nghệ', 1264607869, 'tranxp34878@gmail.com', '', 1, 765000, 1),
 (18, 2, '2021-01-14', 'Trần Quốc Tú', '26 Huỳnh Văn Nghệ', 1264607869, 'tranxp34878@gmail.com', '', 2, 25200000, 1),
-(19, 2, '2021-01-14', 'Trần Quốc Tú', '26 Huỳnh Văn Nghệ', 1264607869, 'tranxp34878@gmail.com', '', 1, 15300000, 1);
+(19, 2, '2021-01-14', 'Trần Quốc Tú', '26 Huỳnh Văn Nghệ', 1264607869, 'tranxp34878@gmail.com', '', 1, 15300000, 1),
+(34, 0, '0000-00-00', 'tu12', '', 2345678, 'tu@gamil.com', '', 0, 0, 0),
+(35, 0, '0000-00-00', 'tu12', '', 2345678, 'tu@gamil.com', '', 0, 0, 0),
+(36, 0, '0000-00-00', 'tuvip', '', 123, 'tu@gmail.com', '', 0, 0, 0),
+(37, 0, '0000-00-00', 'tu', '', 123, 't@gamil.com', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -296,7 +308,7 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `hanghoa`
@@ -313,19 +325,6 @@ ALTER TABLE `taikhoan`
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
-
---
--- Các ràng buộc cho bảng `chitietdh`
---
-ALTER TABLE `chitietdh`
-  ADD CONSTRAINT `chitietdh_ibfk_1` FOREIGN KEY (`iddh`) REFERENCES `donhang` (`id`),
-  ADD CONSTRAINT `chitietdh_ibfk_2` FOREIGN KEY (`idsp`) REFERENCES `hanghoa` (`id`);
-
---
--- Các ràng buộc cho bảng `donhang`
---
-ALTER TABLE `donhang`
-  ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`idkhachhang`) REFERENCES `taikhoan` (`id`);
 
 --
 -- Các ràng buộc cho bảng `hanghoa`

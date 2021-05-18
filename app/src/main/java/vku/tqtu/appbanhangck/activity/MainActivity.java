@@ -1,5 +1,6 @@
 package vku.tqtu.appbanhangck.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -39,6 +42,7 @@ import retrofit2.Response;
 import vku.tqtu.appbanhangck.R;
 import vku.tqtu.appbanhangck.adapter.Loaispdapter;
 import vku.tqtu.appbanhangck.adapter.SanphamAdapter;
+import vku.tqtu.appbanhangck.model.Giohang;
 import vku.tqtu.appbanhangck.model.Loaisp;
 import vku.tqtu.appbanhangck.model.Sanpham;
 import vku.tqtu.appbanhangck.model.result;
@@ -63,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Sanpham> mangsanpham;
     SanphamAdapter sanphamadapter;
 
+    public static ArrayList<Giohang> manggiohang ;
+
     int id=0;
     String tenloaisp="";
     String hinhanhloaisp= "";
@@ -80,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         anhxa();
+
         // kiểm tra kết nối
         if (CheckConnection.haveNetworkConnection(getApplicationContext())){ // nếu thành công
-            ActionBar();
-            ActionViewFlipper();
-
+            ActionBar();// menu
+            ActionViewFlipper(); // quảng cáo
             CatchOnItemListView();
 
         }else {
@@ -115,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
         ApiSanphammoinhat.ApiSanphammoinhat.getSanphammoinhat().enqueue(new Callback<result_sanpham>() {
             @Override
             public void onResponse(Call<result_sanpham> call, Response<result_sanpham> response) {
@@ -144,7 +151,22 @@ public class MainActivity extends AppCompatActivity {
                 txt.setText("Lỗi rồi ");
             }
         });
+
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }//tạo menu tới giỏ hàng
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menugiohang:
+                Intent intent =new Intent(getApplicationContext(),GiohangActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }//tạo sự kiện cho giỏ hàng
 
     private void CatchOnItemListView() {
         listViewmanhinhchinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -234,8 +256,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
     private void ActionViewFlipper(){
         ArrayList<String> mangquangcao= new ArrayList<>();
         mangquangcao.add("https://noithattrevietnam.com/uploaded/2018/08/1-mau-nha-dep-noi-that-hien-dai-can-80m2%20%281%29.jpg");
@@ -287,5 +307,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         recyclerView.setAdapter(sanphamadapter);
+        if (manggiohang!=null){
+            Toast.makeText(MainActivity.this, "mang deo co gì ca", Toast.LENGTH_SHORT).show();
+        }else {
+            manggiohang= new ArrayList<>();
+
+        }
     }
 }

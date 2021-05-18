@@ -1,9 +1,11 @@
 package vku.tqtu.appbanhangck.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +18,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import vku.tqtu.appbanhangck.R;
+import vku.tqtu.appbanhangck.activity.ChitietSanpham;
 import vku.tqtu.appbanhangck.model.Sanpham;
+import vku.tqtu.appbanhangck.ultil.CheckConnection;
 
 public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHolder> {
    Context context;
@@ -57,7 +61,16 @@ public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHold
             imghinhsanpham = (ImageView)itemView.findViewById(R.id.imageviewsanpham);
             txtgiasanpham= (TextView) itemView.findViewById(R.id.textviewgiasanpham);
             txttensanpham= (TextView) itemView.findViewById(R.id.textviewtensanpham);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, ChitietSanpham.class);
+                    intent.putExtra("thongtinsanpham",sanphamArrayList.get(getAdapterPosition()));
+                    CheckConnection.ShowToast_Short(context,sanphamArrayList.get(getAdapterPosition()).getTenhang());
+                    context.startActivity(intent);
 
+                }
+            });
 
         }
     }
