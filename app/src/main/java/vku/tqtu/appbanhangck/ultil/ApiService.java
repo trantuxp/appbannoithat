@@ -20,7 +20,7 @@ import static vku.tqtu.appbanhangck.ultil.Server.localhost;
 public interface ApiService {
 
     ApiService  apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.72/")
+            .baseUrl("https://websitent.000webhostapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService.class) ;

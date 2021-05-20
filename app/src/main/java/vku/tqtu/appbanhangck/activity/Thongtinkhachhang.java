@@ -53,31 +53,9 @@ public class Thongtinkhachhang extends AppCompatActivity {
                 String sodt =editsdt.getText().toString().trim();
                 String email =editemail.getText().toString().trim();
                 if (ten.length()>0&&sodt.length()>0&&email.length()>0){
-//                    ApiService.apiService.getthongtinkhachhang(ten,sodt,email).enqueue(new Callback<result_sanphambydanhmuc>() {
-//                        @Override
-//                        public void onResponse(Call<result_sanphambydanhmuc> call, Response<result_sanphambydanhmuc> response) {
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<result_sanphambydanhmuc> call, Throwable t) {
-//
-//                        }
-//                    });
-
-                    JsonArray jsonArray = new JsonArray();
-                    for (int i=0;i<MainActivity.manggiohang.size();i++){
-                        JsonObject jsonObject = new JsonObject();
-                        jsonObject.addProperty("masanpham",MainActivity.manggiohang.get(i).getIdsp());
-                        jsonObject.addProperty("tensanpham",MainActivity.manggiohang.get(i).getTensp());
-                        jsonObject.addProperty("soluongsanpham",MainActivity.manggiohang.get(i).getSoluongsp());
-                        jsonObject.addProperty("giasanpham",MainActivity.manggiohang.get(i).getGiasp());
-                        jsonArray.add(jsonObject);
-                    }
-                        String json= jsonArray.toString();
-                    ApiService.apiService.getchitietdonhang(json).enqueue(new Callback<result_sanphambydanhmuc>() {
+                    ApiService.apiService.getthongtinkhachhang(ten,sodt,email).enqueue(new Callback<result_sanphambydanhmuc>() {
                         @Override
                         public void onResponse(Call<result_sanphambydanhmuc> call, Response<result_sanphambydanhmuc> response) {
-
                         }
 
                         @Override
@@ -85,6 +63,28 @@ public class Thongtinkhachhang extends AppCompatActivity {
 
                         }
                     });
+//
+//                    JsonArray jsonArray = new JsonArray();
+//                    for (int i=0;i<MainActivity.manggiohang.size();i++){
+//                        JsonObject jsonObject = new JsonObject();
+//                        jsonObject.addProperty("masanpham",MainActivity.manggiohang.get(i).getIdsp());
+//                        jsonObject.addProperty("tensanpham",MainActivity.manggiohang.get(i).getTensp());
+//                        jsonObject.addProperty("soluongsanpham",MainActivity.manggiohang.get(i).getSoluongsp());
+//                        jsonObject.addProperty("giasanpham",MainActivity.manggiohang.get(i).getGiasp());
+//                        jsonArray.add(jsonObject);
+//                    }
+//                        String json= jsonArray.toString();
+//                    ApiService.apiService.getchitietdonhang(json).enqueue(new Callback<result_sanphambydanhmuc>() {
+//                        @Override
+//                        public void onResponse(Call<result_sanphambydanhmuc> call, Response<result_sanphambydanhmuc> response) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<result_sanphambydanhmuc> call, Throwable t) {
+//
+//                        }
+//                    });
                 }else {
                     CheckConnection.ShowToast_Short(getApplicationContext(),"Bạn hãy kiểm tra lại kết nói");
                 }

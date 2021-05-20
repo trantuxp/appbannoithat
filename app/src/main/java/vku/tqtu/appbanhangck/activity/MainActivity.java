@@ -23,16 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -50,7 +42,6 @@ import vku.tqtu.appbanhangck.model.result_sanpham;
 import vku.tqtu.appbanhangck.ultil.ApiSanphammoinhat;
 import vku.tqtu.appbanhangck.ultil.ApiService;
 import vku.tqtu.appbanhangck.ultil.CheckConnection;
-import vku.tqtu.appbanhangck.ultil.Server;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -97,30 +88,35 @@ public class MainActivity extends AppCompatActivity {
             CheckConnection.ShowToast_Short(getApplicationContext(),"Bạn hãy kiểm tra kết nối");
             finish();
         }
+
+        GetDataApi();
+    }
+
+    private void GetDataApi() {
         ApiService.apiService.getDanhmucApi().enqueue(new Callback<result>() {
-                    @Override
-                    public void onResponse(Call<result> call, retrofit2.Response<result> response) {
-                        result loaisp = response.body();
+            @Override
+            public void onResponse(Call<result> call, retrofit2.Response<result> response) {
+                result loaisp = response.body();
 //                        TextView txt = findViewById(R.id.text_san);
 //                        txt.setText(loaisp.getData().get(2).getTenloaisp() + "");
-                        for (int i = 0; i <loaisp.getData().size(); i++) {
-                            id = loaisp.getData().get(i).getId();
-                            tenloaisp = loaisp.getData().get(i).getTenloaisp();
-                            hinhanhloaisp = loaisp.getData().get(i).getHinhloaisp();
-                            mangloaisp.add(new Loaisp(id, tenloaisp, hinhanhloaisp));
+                for (int i = 0; i <loaisp.getData().size(); i++) {
+                    id = loaisp.getData().get(i).getId();
+                    tenloaisp = loaisp.getData().get(i).getTenloaisp();
+                    hinhanhloaisp = loaisp.getData().get(i).getHinhloaisp();
+                    mangloaisp.add(new Loaisp(id, tenloaisp, hinhanhloaisp));
 
-                            loaispdapter.notifyDataSetChanged();
-                        }
-                        mangloaisp.add(loaisp.getData().size()+1,new Loaisp(1,"Liên hệ","http://file.hstatic.net/1000068742/article/nhiet_tinh.png"));
-                        mangloaisp.add(loaisp.getData().size()+2,new Loaisp(2,"Thông tin",
-                                "https://lh3.googleusercontent.com/proxy/vLj8z_W0dzHR5ad-n-WroZI7WJxzMyVTtAH_2WnUFOplHkCnYuZkDC311WjHZFDf6Ktea7Ab_RcI1mP08S6mh9K0i5fmtog"));
-                    }
-                    public void onFailure(Call<result> call, Throwable t) {
-                        TextView txt = findViewById(R.id.text_san) ;
-                        txt.setText("Lỗi rồi ");
+                    loaispdapter.notifyDataSetChanged();
+                }
+                mangloaisp.add(loaisp.getData().size()+1,new Loaisp(1,"Liên hệ","http://file.hstatic.net/1000068742/article/nhiet_tinh.png"));
+                mangloaisp.add(loaisp.getData().size()+2,new Loaisp(2,"Thông tin",
+                        "https://lh3.googleusercontent.com/proxy/vLj8z_W0dzHR5ad-n-WroZI7WJxzMyVTtAH_2WnUFOplHkCnYuZkDC311WjHZFDf6Ktea7Ab_RcI1mP08S6mh9K0i5fmtog"));
+            }
+            public void onFailure(Call<result> call, Throwable t) {
+                TextView txt = findViewById(R.id.text_san) ;
+                txt.setText("Lỗi rồi ");
 
-                    }
-                });
+            }
+        });
 
         ApiSanphammoinhat.ApiSanphammoinhat.getSanphammoinhat().enqueue(new Callback<result_sanpham>() {
             @Override
@@ -152,11 +148,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (ManhinhSplash.tong<100){
+            Intent intent = new Intent(MainActivity.this, ManhinhSplash.class);
+            startActivity(intent);
+        }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.account,menu);
         getMenuInflater().inflate(R.menu.menu,menu);
+
+
         return true;
     }//tạo menu tới giỏ hàng
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -164,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menugiohang:
                 Intent intent =new Intent(getApplicationContext(),GiohangActivity.class);
                 startActivity(intent);
+            case R.id.menudangnhap:
+                Intent intent1 =new Intent(getApplicationContext(),Dangnhap.class);
+                startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
     }//tạo sự kiện cho giỏ hàng
@@ -308,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         recyclerView.setAdapter(sanphamadapter);
         if (manggiohang!=null){
-            Toast.makeText(MainActivity.this, "mang deo co gì ca", Toast.LENGTH_SHORT).show();
+
         }else {
             manggiohang= new ArrayList<>();
 

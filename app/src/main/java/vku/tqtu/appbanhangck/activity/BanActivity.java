@@ -79,19 +79,23 @@ public class BanActivity extends AppCompatActivity {
         
     }
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.account,menu);
         getMenuInflater().inflate(R.menu.menu,menu);
-        return true;
-    }
 
-    @Override
+
+        return true;
+    }//tạo menu tới giỏ hàng
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.menugiohang:
                 Intent intent =new Intent(getApplicationContext(),GiohangActivity.class);
                 startActivity(intent);
+            case R.id.menudangnhap:
+                Intent intent1 =new Intent(getApplicationContext(),Dangnhap.class);
+                startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
-    }
+    }//tạo sự kiện cho giỏ hàng
     private void LoadmoreData() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

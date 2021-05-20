@@ -12,12 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBanhangck">
-        <activity android:name=".activity.Thongtinkhachhang"></activity>
+        <activity android:name=".activity.QuanlyHanghoa"></activity>
+        <activity android:name=".activity.Admin" />
+        <activity android:name=".activity.ManhinhSplash" />
+        <activity android:name=".activity.Thongtinkhachhang" />
         <activity android:name=".activity.GiohangActivity" />
         <activity android:name=".activity.ChitietSanpham" />
         <activity android:name=".activity.ThongtinActivity" />
         <activity android:name=".activity.LienheActivity" />
         <activity android:name=".activity.BanActivity" />
+        <activity android:name=".activity.Dangnhap" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

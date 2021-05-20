@@ -9,7 +9,7 @@ import vku.tqtu.appbanhangck.model.result_sanpham;
 
 public interface ApiSanphammoinhat {
     ApiSanphammoinhat  ApiSanphammoinhat = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.72/")
+            .baseUrl("https://websitent.000webhostapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiSanphammoinhat.class) ;
