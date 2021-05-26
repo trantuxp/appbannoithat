@@ -4,10 +4,9 @@
 	$sodienthoai=$_GET['sodienthoai'];
 	$email=$_GET['email'];
 	if (strlen($tenkhachang)>0&&strlen($sodienthoai)>0&& strlen($email)>0 ) {
-		$query="INSERT INTO donhang(id,tenuser,sodt,email) VALUES (null,'$tenkhachang','$sodienthoai','$email')";
+		$query="INSERT INTO donhang(tenuser,sodt,email) VALUES ('$tenkhachang',$sodienthoai,'$email')";
 		if (mysqli_query($connect,$query)) {
-			$iddonhang= $connect ->insert_id;
-			echo $iddonhang;
+		    echo "Thanh cong";
 		}else {
 			echo "Thất bại";
 		}

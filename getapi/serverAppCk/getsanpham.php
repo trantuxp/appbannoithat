@@ -5,7 +5,7 @@
  	$space=5;
  	$limit = ($page-1)*$space;
  	$mangsanpham= array();
- 	$query= "SELECT * FROM hanghoa WHERE iddanhmuc=".$idloaisp." LIMIT $limit,$space ";
+ 	$query= "SELECT * FROM hanghoa  ";
  	$data= mysqli_query($connect,$query);
 	while($row =mysqli_fetch_assoc($data)){
 			array_push($mangsanpham, new Sanpham(
