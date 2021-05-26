@@ -1,9 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ThongtinActivity">
+    tools:context=".activity.ThongtinActivity"
+    android:orientation="vertical"
+   >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Thông tin"/>
+
+    <LinearLayout
+        android:id="@+id/imgshop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/anhshop"
+        android:gravity="center">
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:text="Thông tin về chúng tôi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:background="#ffe"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="100dp"
+                android:layout_height="70dp"/>
+            <TextView
+                android:id="@+id/txttenshop"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:text="Tên shop: ATF shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="#ffe"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="100dp"
+                android:layout_height="70dp"/>
+            <TextView
+                android:id="@+id/txtdiachishop"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:text="Tên shop: ATF shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="#ffe"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="100dp"
+                android:layout_height="70dp"/>
+            <TextView
+                android:id="@+id/txtsodtshop"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:text="Tên shop: ATF shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="#ffe"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="100dp"
+                android:layout_height="70dp"/>
+            <TextView
+                android:id="@+id/txtemailshop"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:text="Tên shop: ATF shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -35,7 +33,7 @@ public class ChitietSanpham extends AppCompatActivity {
     int id=0;
     String tenchitiet= "";
     int soluongchitiet=0;
-    double dongiachitiet=0;
+    long dongiachitiet=0;
     String anhchitiet="";
     String ngaychitiet="";
     String motachitiet="";

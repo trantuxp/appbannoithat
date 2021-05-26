@@ -32,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vku.tqtu.appbanhangck.R;
-import vku.tqtu.appbanhangck.adapter.Loaispdapter;
+import vku.tqtu.appbanhangck.adapter.LoaispAdapter;
 import vku.tqtu.appbanhangck.adapter.SanphamAdapter;
 import vku.tqtu.appbanhangck.model.Giohang;
 import vku.tqtu.appbanhangck.model.Loaisp;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     ArrayList<Loaisp> mangloaisp;
-    Loaispdapter loaispdapter;
+    LoaispAdapter loaispAdapter;
 
     ArrayList<Sanpham> mangsanpham;
     SanphamAdapter sanphamadapter;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     int idsanppham=0;
     String tenhang= "";
     int soluong=0;
-    double dongia=0;
+    long dongia=0;
     String anh="";
     String ngay="";
     String mota="";
@@ -105,11 +105,12 @@ public class MainActivity extends AppCompatActivity {
                     hinhanhloaisp = loaisp.getData().get(i).getHinhloaisp();
                     mangloaisp.add(new Loaisp(id, tenloaisp, hinhanhloaisp));
 
-                    loaispdapter.notifyDataSetChanged();
+                    loaispAdapter.notifyDataSetChanged();
                 }
-                mangloaisp.add(loaisp.getData().size()+1,new Loaisp(1,"Liên hệ","http://file.hstatic.net/1000068742/article/nhiet_tinh.png"));
-                mangloaisp.add(loaisp.getData().size()+2,new Loaisp(2,"Thông tin",
-                        "https://lh3.googleusercontent.com/proxy/vLj8z_W0dzHR5ad-n-WroZI7WJxzMyVTtAH_2WnUFOplHkCnYuZkDC311WjHZFDf6Ktea7Ab_RcI1mP08S6mh9K0i5fmtog"));
+                mangloaisp.add(loaisp.getData().size()+1,new Loaisp(2,"Thông tin",
+                        "http://tienganhk12.com/Upload/Quiz/Icons/information-icon.jpg"));
+                mangloaisp.add(loaisp.getData().size()+2,new Loaisp(1,"Admin","https://i.pinimg.com/originals/2d/5d/f2/2d5df21f3f00bce5285f081d20dce192.png"));
+
             }
             public void onFailure(Call<result> call, Throwable t) {
                 TextView txt = findViewById(R.id.text_san) ;
@@ -192,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1:
                         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent( MainActivity.this,BanActivity.class);
+                            Intent intent = new Intent( MainActivity.this, DanhmucActivity.class);
                             intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
                             intent.putExtra("tendanhmuc",mangloaisp.get(position).getTenloaisp());
                             startActivity(intent);
@@ -204,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent( MainActivity.this,BanActivity.class);
+                            Intent intent = new Intent( MainActivity.this, DanhmucActivity.class);
                             intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
                             intent.putExtra("tendanhmuc",mangloaisp.get(position).getTenloaisp());
                             startActivity(intent);
@@ -216,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent( MainActivity.this,BanActivity.class);
+                            Intent intent = new Intent( MainActivity.this, DanhmucActivity.class);
                             intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
                             intent.putExtra("tendanhmuc",mangloaisp.get(position).getTenloaisp());
                             startActivity(intent);
@@ -228,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 4:
                         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent( MainActivity.this,BanActivity.class);
+                            Intent intent = new Intent( MainActivity.this, DanhmucActivity.class);
                             intent.putExtra("idloaisanpham",mangloaisp.get(position).getId());
                             intent.putExtra("tendanhmuc",mangloaisp.get(position).getTenloaisp());
                             startActivity(intent);
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 5:
                         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent( MainActivity.this,LienheActivity.class);
+                            Intent intent = new Intent( MainActivity.this,ThongtinActivity.class);
                             startActivity(intent);
                         }else {
                             CheckConnection.ShowToast_Short(getApplicationContext(),"Bạn hãy kiểm tra lại kết nối");
@@ -250,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 6:
                         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent( MainActivity.this,ThongtinActivity.class);
+                            Intent intent = new Intent( MainActivity.this,Admin.class);
                             startActivity(intent);
                         }else {
                             CheckConnection.ShowToast_Short(getApplicationContext(),"Bạn hãy kiểm tra lại kết nối");
@@ -258,7 +259,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
-
                 }
             }
         });
@@ -307,8 +307,8 @@ public class MainActivity extends AppCompatActivity {
         mangloaisp = new ArrayList<>();
         mangloaisp.add(0,new Loaisp(0,"Trang chính",
                 "https://png.pngtree.com/png-vector/20190129/ourlarge/pngtree-home-icon-graphic-design-template-vector-png-image_358126.jpg"));
-        loaispdapter = new Loaispdapter(mangloaisp, getApplicationContext());
-        listViewmanhinhchinh.setAdapter(loaispdapter);
+        loaispAdapter = new LoaispAdapter(mangloaisp, getApplicationContext());
+        listViewmanhinhchinh.setAdapter(loaispAdapter);
         mangsanpham =new ArrayList<>();
         sanphamadapter = new SanphamAdapter(getApplicationContext(),mangsanpham);
         recyclerView.setHasFixedSize(true);

@@ -64,7 +64,8 @@ public class SanphamAdapter extends RecyclerView.Adapter<SanphamAdapter.ItemHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, ChitietSanpham.class);
+                    Intent intent = new Intent(context,ChitietSanpham.class);
+                    intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("thongtinsanpham",sanphamArrayList.get(getAdapterPosition()));
                     CheckConnection.ShowToast_Short(context,sanphamArrayList.get(getAdapterPosition()).getTenhang());
                     context.startActivity(intent);

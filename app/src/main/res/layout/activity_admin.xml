@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"/>
     </androidx.appcompat.widget.Toolbar>
     <ImageView
+        android:id="@+id/imgquanlyhh"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:src="@mipmap/ic_launcher"
@@ -34,11 +35,12 @@
         android:textSize="20sp"
         android:textColor="#000"
         android:layout_marginTop="20dp"
-        android:text="QUẢN LÝ CỬA HÀNG HÓA"
+        android:text="QUẢN LÝ HÀNG HÓA"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <ImageView
+        android:id="@+id/imgquanlycuahang"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:src="@mipmap/ic_launcher"
@@ -48,7 +50,7 @@
         android:textColor="#000"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="QUẢN LÝ CỬA HÀNG HÓA"
+        android:text="QUẢN LÝ THÔNG TIN CỬA HÀNG HÓA"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

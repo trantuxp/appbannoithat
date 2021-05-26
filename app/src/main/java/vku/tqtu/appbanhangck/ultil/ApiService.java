@@ -27,12 +27,33 @@ public interface ApiService {
     @GET("/serverAppCk/getloaisp.php")
     Call<result> getDanhmucApi();
 
-    @GET("/serverAppCk/getspmoinhat.php")
-    Call<result_sanpham> getSanphammoinhat();
+
     @GET("/serverAppCk/getsanpham.php")
-    Call<result_sanphambydanhmuc> getsanpham(@Query("page") int i,@Query("idloaisp") int j);
+    Call<result_sanphambydanhmuc> getsanpham(@Query("page") int i,
+                                             @Query("idloaisp") int j);
     @GET("/serverAppCk/thongtinkhachhang.php")
-    Call<result_sanphambydanhmuc> getthongtinkhachhang(@Query("tenkhachang") String tenkh,@Query("sodienthoai") String sodt,@Query("email") String email);
+    Call<result_sanphambydanhmuc> getthongtinkhachhang(@Query("tenkhachang") String tenkh,
+                                                       @Query("sodienthoai") String sodt,
+                                                       @Query("email") String email);
     @GET("/serverAppCk/chitietdonhang.php")
     Call<result_sanphambydanhmuc> getchitietdonhang(@Query("json") String jsonArray);
+    @GET("/serverAppCk/gettatcasanpham.php")
+    Call<result_sanpham> gettatcasanpham();
+    @GET("/serverAppCk/themhanghoa.php")
+    Call<result_sanpham> themhanghoa(@Query("tensanpham") String tensp,
+                                     @Query("soluong") int soluong,
+                                     @Query("gia") long gia,
+                                     @Query("anh") String anh,
+                                     @Query("mota") String mota,
+                                     @Query("iddanhmuc") int iddanhmuc);
+    @GET("/serverAppCk/suahanghoa.php")
+    Call<result_sanpham> suahanghoa(@Query("id") int id,
+                                    @Query("tensanpham") String tensp,
+                                     @Query("soluong") int soluong,
+                                     @Query("gia") long gia,
+                                     @Query("anh") String anh,
+                                     @Query("mota") String mota,
+                                     @Query("iddanhmuc") int iddanhmuc);
+    @GET("/serverAppCk/Xoahanghoa.php")
+    Call<result_sanpham> xoahanghoa(@Query("id") int id);
 }

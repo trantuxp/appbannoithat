@@ -1,14 +1,12 @@
 package vku.tqtu.appbanhangck.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class Sanpham implements Serializable {
     public int id;
     public String tenhang;
     public int soluong;
-    public double dongia;
+    public long dongia;
     public String anh;
     public String ngay;
     public String mota;
@@ -38,11 +36,11 @@ public class Sanpham implements Serializable {
         this.soluong = soluong;
     }
 
-    public double getDongia() {
+    public long getDongia() {
         return dongia;
     }
 
-    public void setDongia(double dongia) {
+    public void setDongia(long dongia) {
         this.dongia = dongia;
     }
 
@@ -78,7 +76,7 @@ public class Sanpham implements Serializable {
         this.iddanhmuc = iddanhmuc;
     }
 
-    public Sanpham(int id, String tenhang, int soluong, double dongia, String anh, String ngay, String mota, int iddanhmuc) {
+    public Sanpham(int id, String tenhang, int soluong, long dongia, String anh, String ngay, String mota, int iddanhmuc) {
         this.id = id;
         this.tenhang = tenhang;
         this.soluong = soluong;

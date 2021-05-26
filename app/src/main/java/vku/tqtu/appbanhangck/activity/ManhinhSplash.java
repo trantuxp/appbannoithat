@@ -29,15 +29,15 @@ public class ManhinhSplash extends AppCompatActivity {
         }
         protected String doInBackground(Void... voids) {
             progressBar.setProgress(0);
-            for (int i=1; i<101;i+=2) {
+            for (int i=0; i<102;i+=2) {
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(20);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                tong++;
+                tong+=2;
                 int dem = progressBar.getProgress();
-                progressBar.setProgress(dem + 1);
+                progressBar.setProgress(dem + 2);
                 String phantram =String.valueOf(progressBar.getProgress());
                 publishProgress(phantram+"% ");
             }
