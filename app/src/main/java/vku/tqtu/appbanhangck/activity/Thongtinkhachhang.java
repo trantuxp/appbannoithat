@@ -19,13 +19,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vku.tqtu.appbanhangck.R;
+import vku.tqtu.appbanhangck.model.result;
 import vku.tqtu.appbanhangck.model.result_sanphambydanhmuc;
 import vku.tqtu.appbanhangck.ultil.ApiService;
 import vku.tqtu.appbanhangck.ultil.CheckConnection;
 
 public class Thongtinkhachhang extends AppCompatActivity {
 
-    EditText edittenkhachhang,editemail,editsdt;
+    EditText edittenkhachhang,editemail,editsdt,editdiachi;
     Button btnxacnhan,btntrove;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +51,25 @@ public class Thongtinkhachhang extends AppCompatActivity {
             public void onClick(View v) {
 
                 String ten =edittenkhachhang.getText().toString().trim();
-                String sodt =editsdt.getText().toString().trim();
+                String diachi =editdiachi.getText().toString().trim();
+                int sodt =Integer.parseInt(editsdt.getText().toString().trim());
                 String email =editemail.getText().toString().trim();
-                if (ten.length()>0&&sodt.length()>0&&email.length()>0){
-                    ApiService.apiService.getthongtinkhachhang(ten,sodt,email).enqueue(new Callback<result_sanphambydanhmuc>() {
+                int tongsp=0;
+                double tongtien=0;
+                for (int i=0;i<MainActivity.manggiohang.size();i++){
+                    tongsp+=MainActivity.manggiohang.get(i).getSoluongsp();
+                    tongtien+=MainActivity.manggiohang.get(i).getGiasp()*MainActivity.manggiohang.get(i).getSoluongsp();
+                }
+                Toast.makeText(Thongtinkhachhang.this, tongsp+":"+tongtien, Toast.LENGTH_SHORT).show();
+                if (ten.length()>0&&diachi.length()>0&&email.length()>0){
+                    ApiService.apiService.setthongtinkh(ten,diachi,sodt,email,tongsp,tongtien).enqueue(new Callback<result_sanphambydanhmuc>() {
                         @Override
                         public void onResponse(Call<result_sanphambydanhmuc> call, Response<result_sanphambydanhmuc> response) {
+
                         }
 
                         @Override
                         public void onFailure(Call<result_sanphambydanhmuc> call, Throwable t) {
-
                         }
                     });
                     JsonArray jsonArray = new JsonArray();
@@ -92,9 +101,10 @@ public class Thongtinkhachhang extends AppCompatActivity {
     }
 
     private void Anhxa() {
+        editdiachi= findViewById(R.id.edittextdiachikhachhang);
         edittenkhachhang= findViewById(R.id.edittexttenkhachhang);
         editsdt= findViewById(R.id.edittextsodtkhachhang);
-        editemail= findViewById(R.id.edittextemail);
+        editemail= findViewById(R.id.edittextemail );
         btnxacnhan= findViewById(R.id.btnxacnhan);
         btntrove= findViewById(R.id.btntrove);
     }

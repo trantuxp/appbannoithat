@@ -31,7 +31,7 @@ public class ManhinhSplash extends AppCompatActivity {
             progressBar.setProgress(0);
             for (int i=0; i<102;i+=2) {
                 try {
-                    Thread.sleep(20);
+                    Thread.sleep(30);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -46,8 +46,7 @@ public class ManhinhSplash extends AppCompatActivity {
 
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Intent intent = new Intent(ManhinhSplash.this,MainActivity.class);
-            startActivity(intent);
+            finish();
         }
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);

@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBanhangck">
-        <activity android:name=".activity.Xulythongtinhanghoa"></activity>
+        <activity android:name=".activity.Timkiem"></activity>
+        <activity android:name=".activity.Xulythongtincuahang" />
+        <activity android:name=".activity.Hoadon" />
+        <activity android:name=".activity.Xulythongtinhanghoa" />
         <activity android:name=".activity.Admin" />
         <activity android:name=".activity.QuanlyHanghoa" />
         <activity android:name=".activity.ManhinhSplash" />

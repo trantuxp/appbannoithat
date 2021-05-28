@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-    <item android:id="@+id/menudangnhap"
+    <item android:id="@+id/menutaikhoan"
         app:showAsAction="always"
-        android:title="Tên user"
+        android:title=""
         />
 
 

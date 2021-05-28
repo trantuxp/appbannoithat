@@ -10,7 +10,7 @@
     <TextView
         android:gravity="center"
         android:textSize="26sp"
-        android:text="THÔNG TIN KHÁCH HÀNG"
+        android:text="THÔNG TIN HÀNG HÓA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText

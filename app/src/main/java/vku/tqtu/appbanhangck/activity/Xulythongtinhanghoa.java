@@ -2,6 +2,7 @@ package vku.tqtu.appbanhangck.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class Xulythongtinhanghoa extends AppCompatActivity {
     long gia=0;
     String anh="";
     String mota="";
+    ArrayAdapter<String> adapter;
 
     int iddanhmuc;
     EditText edittenhh,editsoluonghh,editgiahh,editanhhh,editmotahh;
@@ -56,6 +58,7 @@ public class Xulythongtinhanghoa extends AppCompatActivity {
             editgiahh.setText(sanpham.getDongia()+"");
             editanhhh.setText(sanpham.getAnh());
             editmotahh.setText(sanpham.getMota());
+            spinneriddanhmuc.setSelection(sanpham.getIddanhmuc()-1);
         }
     }
 
@@ -119,7 +122,7 @@ public class Xulythongtinhanghoa extends AppCompatActivity {
         spinneriddanhmuc= findViewById(R.id.spinneriddanhmuc);
         btnquaylai= findViewById(R.id.btnhuydienthongtinhh);
         btnxacnhan= findViewById(R.id.btnxacnhanhh);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>
+        adapter=new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, arr);
         adapter.setDropDownViewResource
                 (android.R.layout.simple_list_item_single_choice);

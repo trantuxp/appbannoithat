@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activity.ThongtinActivity"
     android:orientation="vertical"
-   >
+    >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarthongtin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -26,10 +26,11 @@
         android:gravity="center">
 
         <TextView
+
             android:textStyle="bold"
             android:layout_marginBottom="40dp"
             android:gravity="center"
-            android:textColor="#000"
+            android:textColor="#fff"
             android:textSize="30sp"
             android:text="Thông tin về chúng tôi"
             android:layout_width="match_parent"
@@ -43,14 +44,14 @@
             android:layout_height="wrap_content"
             android:gravity="center">
             <ImageView
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_baseline_home_work_24"
                 android:layout_width="100dp"
                 android:layout_height="70dp"/>
             <TextView
                 android:id="@+id/txttenshop"
                 android:textColor="#000"
                 android:textSize="20sp"
-                android:text="Tên shop: ATF shop"
+                android:text="Tên shop: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -66,14 +67,14 @@
             android:gravity="center">
             <ImageView
 
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_baseline_location_on_24"
                 android:layout_width="100dp"
                 android:layout_height="70dp"/>
             <TextView
                 android:id="@+id/txtdiachishop"
                 android:textColor="#000"
                 android:textSize="20sp"
-                android:text="Tên shop: ATF shop"
+                android:text="Địa chỉ rạp: L3-Bitexco Icon 68, 2 Hải Triều, Q.1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -87,14 +88,14 @@
             android:layout_height="wrap_content"
             android:gravity="center">
             <ImageView
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_baseline_local_phone_24"
                 android:layout_width="100dp"
                 android:layout_height="70dp"/>
             <TextView
                 android:id="@+id/txtsodtshop"
                 android:textColor="#000"
                 android:textSize="20sp"
-                android:text="Tên shop: ATF shop"
+                android:text="Số điện thoại(Hotline): 1900 999 999 "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -108,14 +109,14 @@
             android:layout_height="wrap_content"
             android:gravity="center">
             <ImageView
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_baseline_email_24"
                 android:layout_width="100dp"
                 android:layout_height="70dp"/>
             <TextView
                 android:id="@+id/txtemailshop"
                 android:textColor="#000"
                 android:textSize="20sp"
-                android:text="Tên shop: ATF shop"
+                android:text="Email: support@gmail.vn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

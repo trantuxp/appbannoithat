@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:orientation="vertical" android:layout_width="400dp"
+    android:layout_height="300dp"
+    android:gravity="center"
+    android:layout_gravity="center">
     <TextView
+
+        android:textStyle="bold"
         android:gravity="center"
         android:textSize="30sp"
         android:text="ĐĂNG KÝ"
@@ -13,13 +16,13 @@
         android:layout_marginTop="20dp"
         android:id="@+id/edittendangky"
         android:hint="Nhập tên người dùng"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"/>
     <EditText
         android:layout_marginTop="20dp"
         android:id="@+id/editmatkhaudangky"
         android:hint="Nhập mật khẩu"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"/>
 
     <LinearLayout

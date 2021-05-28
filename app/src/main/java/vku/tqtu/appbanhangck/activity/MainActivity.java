@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import androidx.appcompat.widget.Toolbar;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ListView listViewmanhinhchinh;
     DrawerLayout drawerLayout;
+    EditText edittimkiem;
+    ImageView imgtimkiem;
 
     ArrayList<Loaisp> mangloaisp;
     LoaispAdapter loaispAdapter;
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 mangloaisp.add(loaisp.getData().size()+1,new Loaisp(2,"Thông tin",
                         "http://tienganhk12.com/Upload/Quiz/Icons/information-icon.jpg"));
-                mangloaisp.add(loaisp.getData().size()+2,new Loaisp(1,"Admin","https://i.pinimg.com/originals/2d/5d/f2/2d5df21f3f00bce5285f081d20dce192.png"));
+                //mangloaisp.add(loaisp.getData().size()+2,new Loaisp(1,"Admin","https://i.pinimg.com/originals/2d/5d/f2/2d5df21f3f00bce5285f081d20dce192.png"));
 
             }
             public void onFailure(Call<result> call, Throwable t) {
@@ -159,22 +162,42 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.account,menu);
+
+        MenuItem item  ;
+        if (Dangnhap.sessiontendn!=""){
+            Toast.makeText(this, Dangnhap.sessiontendn+"", Toast.LENGTH_SHORT).show();
+            item = menu.findItem(R.id.menutaikhoan);;
+            item.setTitle(Dangnhap.sessiontendn);
+            getMenuInflater().inflate(R.menu.dangxuat,menu);
+        }
+        else {
+            getMenuInflater().inflate(R.menu.dangnhap,menu);
+        }
         getMenuInflater().inflate(R.menu.menu,menu);
-
-
         return true;
     }//tạo menu tới giỏ hàng
+
+
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menugiohang:
-                Intent intent =new Intent(getApplicationContext(),GiohangActivity.class);
-                startActivity(intent);
-            case R.id.menudangnhap:
-                Intent intent1 =new Intent(getApplicationContext(),Dangnhap.class);
-                startActivity(intent1);
+//
+
+        if (item.getItemId()==R.id.menudangnhap){
+            Intent intent2 = new Intent(getApplicationContext(), Dangnhap.class);
+            startActivity(intent2);
+        }
+        else if (item.getItemId()==R.id.menudangxuat){
+            Dangnhap.sessiontendn="";
+            Dangnhap.sessiontendn="";
+            Dangnhap.sessionmatkhaudn="";
+            finish();
+            startActivity(getIntent());
+        }
+        else {
+            Intent intent1 = new Intent(getApplicationContext(), GiohangActivity.class);
+            startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
-    }//tạo sự kiện cho giỏ hàng
+    }
 
     private void CatchOnItemListView() {
         listViewmanhinhchinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -262,6 +285,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        imgtimkiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String noidungtim=edittimkiem.getText().toString().trim();
+                Intent intent = new Intent( MainActivity.this, Timkiem.class);
+                intent.putExtra("noidungtim",noidungtim);
+                startActivity(intent);
+            }
+        });
     }
     private void ActionViewFlipper(){
         ArrayList<String> mangquangcao= new ArrayList<>();
@@ -298,6 +330,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void anhxa(){
+        edittimkiem= findViewById(R.id.edittimkiem);
+        imgtimkiem=findViewById(R.id.imgtimkiem);
+
         toolbar = findViewById(R.id.toolbartrangchinh);
         viewFlipper =  findViewById(R.id.viewflipper);
         recyclerView =  findViewById(R.id.recyclerview);
